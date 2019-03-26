@@ -82,7 +82,6 @@ public class CSVProcessorServiceImpl implements CSVProcessorService {
         LOG.debug("Header map: " + parser.getHeaderMap());
         Transformer<Respondent> transformer = transformerFactory.getTransformer(Respondent.class);
         try {
-            int i = 0;
             for (CSVRecord record : parser) {
                 Map<String, String> map = record.toMap();
                 Respondent item = transformer.transform(map, null);

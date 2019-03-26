@@ -7,42 +7,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "experience_level")
 public class ExperienceLevel {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	@Column
-	private String yearsProgram;
-	
-	@Column
-	private String level;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	public Integer getId() {
-		return id;
-	}
+    @Column
+    private String yearsProgram;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Column
+    private String level;
 
-	public String getYearsProgram() {
-		return yearsProgram;
-	}
-
-	public void setYearsProgram(String yearsProgram) {
-		this.yearsProgram = yearsProgram;
-	}
-
-	public String getLevel() {
-		return level;
-	}
-
-	public void setLevel(String level) {
-		this.level = level;
-	}
-	
 }

@@ -7,47 +7,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "company_size")
 public class CompanySize {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	@Column
-	private String size;
-	
-	@Column
-	private String sizeClass;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	public Integer getId() {
-		return id;
-	}
+    @Column
+    private String size;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Column
+    private String sizeClass;
 
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public String getSizeClass() {
-		return sizeClass;
-	}
-
-	public void setSizeClass(String sizeClass) {
-		this.sizeClass = sizeClass;
-	}
-
-    @Override
-    public String toString() {
-        return "CompanySize [id=" + id + ", size=" + size + ", sizeClass=" + sizeClass + "]";
-    }
-	
 }

@@ -10,6 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.3.10.RELEASE</spring.version>
+        <org.projectlombok.version>1.18.2</org.projectlombok.version>
     </properties>
     
     <build>
@@ -34,7 +35,12 @@
     
     <dependencyManagement>
         <dependencies>
-            
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org.projectlombok.version}</version>
+                <optional>true</optional>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     

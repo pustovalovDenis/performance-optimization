@@ -18,5 +18,8 @@ public interface RespondentDao {
     
     @Transactional(propagation = Propagation.REQUIRED)
     List<Respondent> getAll();
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    List<Respondent> getAllBaseData();
     
 }

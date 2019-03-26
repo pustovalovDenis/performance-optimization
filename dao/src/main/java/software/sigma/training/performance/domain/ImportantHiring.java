@@ -7,141 +7,48 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "important_hiring")
 public class ImportantHiring {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-	
-	@Column
+
+    @Column
     private String learnedHiring;
-	
-	@Column
+
+    @Column
     private String importantHiringAlgorithms;
-	
-	@Column
+
+    @Column
     private String importantHiringTechExp;
-	
-	@Column
+
+    @Column
     private String importantHiringCommunication;
-	
-	@Column
+
+    @Column
     private String importantHiringOpenSource;
-	
-	@Column
+
+    @Column
     private String importantHiringPMExp;
-	
-	@Column
+
+    @Column
     private String importantHiringCompanies;
-	
-	@Column
+
+    @Column
     private String importantHiringTitles;
-	
-	@Column
+
+    @Column
     private String importantHiringEducation;
-	
-	@Column
+
+    @Column
     private String importantHiringRep;
-	
-	@Column
+
+    @Column
     private String importantHiringGettingThingsDone;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getLearnedHiring() {
-		return learnedHiring;
-	}
-
-	public void setLearnedHiring(String learnedHiring) {
-		this.learnedHiring = learnedHiring;
-	}
-
-	public String getImportantHiringAlgorithms() {
-		return importantHiringAlgorithms;
-	}
-
-	public void setImportantHiringAlgorithms(String importantHiringAlgorithms) {
-		this.importantHiringAlgorithms = importantHiringAlgorithms;
-	}
-
-	public String getImportantHiringTechExp() {
-		return importantHiringTechExp;
-	}
-
-	public void setImportantHiringTechExp(String importantHiringTechExp) {
-		this.importantHiringTechExp = importantHiringTechExp;
-	}
-
-	public String getImportantHiringCommunication() {
-		return importantHiringCommunication;
-	}
-
-	public void setImportantHiringCommunication(String importantHiringCommunication) {
-		this.importantHiringCommunication = importantHiringCommunication;
-	}
-
-	public String getImportantHiringOpenSource() {
-		return importantHiringOpenSource;
-	}
-
-	public void setImportantHiringOpenSource(String importantHiringOpenSource) {
-		this.importantHiringOpenSource = importantHiringOpenSource;
-	}
-
-	public String getImportantHiringPMExp() {
-		return importantHiringPMExp;
-	}
-
-	public void setImportantHiringPMExp(String importantHiringPMExp) {
-		this.importantHiringPMExp = importantHiringPMExp;
-	}
-
-	public String getImportantHiringCompanies() {
-		return importantHiringCompanies;
-	}
-
-	public void setImportantHiringCompanies(String importantHiringCompanies) {
-		this.importantHiringCompanies = importantHiringCompanies;
-	}
-
-	public String getImportantHiringTitles() {
-		return importantHiringTitles;
-	}
-
-	public void setImportantHiringTitles(String importantHiringTitles) {
-		this.importantHiringTitles = importantHiringTitles;
-	}
-
-	public String getImportantHiringEducation() {
-		return importantHiringEducation;
-	}
-
-	public void setImportantHiringEducation(String importantHiringEducation) {
-		this.importantHiringEducation = importantHiringEducation;
-	}
-
-	public String getImportantHiringRep() {
-		return importantHiringRep;
-	}
-
-	public void setImportantHiringRep(String importantHiringRep) {
-		this.importantHiringRep = importantHiringRep;
-	}
-
-	public String getImportantHiringGettingThingsDone() {
-		return importantHiringGettingThingsDone;
-	}
-
-	public void setImportantHiringGettingThingsDone(String importantHiringGettingThingsDone) {
-		this.importantHiringGettingThingsDone = importantHiringGettingThingsDone;
-	}
 
 }

@@ -1,39 +1,32 @@
 package software.sigma.training.performance.services;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
 import software.sigma.training.performance.dao.RespondentDao;
-import software.sigma.training.performance.domain.Respondent;
 
 @Service("respondentsService")
+@RequiredArgsConstructor
 public class RespondentsServiceImpl implements RespondentsService {
 
-    @Autowired
-    private RespondentDao respondentDao;
-    
+    private final RespondentDao respondentDao;
+
     @Override
     public Collection<RespondentDTO> getAll() {
-        List<Respondent> source = respondentDao.getAll();
-        List<RespondentDTO> res = new ArrayList<>();
-
-        for (Respondent respondent : source) {
-            RespondentDTO dto = new RespondentDTO();
-            dto.setId(respondent.getId());
-            dto.setCountry(respondent.getCountry());
-            dto.setExpectedSalary(respondent.getExpectedSalary());
-            dto.setGender(respondent.getGender());
-            dto.setInterestedAnswers(respondent.getInterestedAnswers());
-            dto.setProfessional(respondent.getProfessional());
-            
-            res.add(dto);
-        }
-        
-        return res;
+        return respondentDao.getAll().stream().map(respondent ->
+                RespondentDTO
+                        .builder()
+                        .id(respondent.getId())
+                        .country(respondent.getCountry())
+                        .expectedSalary(respondent.getExpectedSalary())
+                        .gender(respondent.getGender())
+                        .interestedAnswers(respondent.getInterestedAnswers())
+                        .professional(respondent.getProfessional())
+                        .build()
+        ).collect(Collectors.toList());
     }
-    
+
 }

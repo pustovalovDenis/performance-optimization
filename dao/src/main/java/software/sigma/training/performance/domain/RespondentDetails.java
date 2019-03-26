@@ -7,218 +7,69 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "respondent_details")
 public class RespondentDetails {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-	
-	@Column
+
+    @Column
     private String pronounceGIF;
-	
-	@Column
+
+    @Column
     private String problemSolving;
-	
-	@Column
+
+    @Column
     private String buildingThings;
-	
-	@Column
+
+    @Column
     private String learningNewTech;
-	
-	@Column
+
+    @Column
     private String boringDetails;
-	
-	@Column
+
+    @Column
     private String jobSecurity;
-	
-	@Column
+
+    @Column
     private String diversityImportant;
-	
-	@Column
+
+    @Column
     private String annoyingUI;
-	
-	@Column
+
+    @Column
     private String friendsDevelopers;
-	
-	@Column
+
+    @Column
     private String rightWrongWay;
-	
-	@Column
+
+    @Column
     private String understandComputers;
-	
-	@Column
+
+    @Column
     private String seriousWork;
-	
-	@Column
+
+    @Column
     private String investTimeTools;
-	
-	@Column
+
+    @Column
     private String workPayCare;
-	
-	@Column
+
+    @Column
     private String kinshipDevelopers;
-	
-	@Column
+
+    @Column
     private String challengeMyself;
-	
-	@Column
+
+    @Column
     private String competePeers;
-	
-	@Column
+
+    @Column
     private String changeWorld;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getPronounceGIF() {
-		return pronounceGIF;
-	}
-
-	public void setPronounceGIF(String pronounceGIF) {
-		this.pronounceGIF = pronounceGIF;
-	}
-
-	public String getProblemSolving() {
-		return problemSolving;
-	}
-
-	public void setProblemSolving(String problemSolving) {
-		this.problemSolving = problemSolving;
-	}
-
-	public String getBuildingThings() {
-		return buildingThings;
-	}
-
-	public void setBuildingThings(String buildingThings) {
-		this.buildingThings = buildingThings;
-	}
-
-	public String getLearningNewTech() {
-		return learningNewTech;
-	}
-
-	public void setLearningNewTech(String learningNewTech) {
-		this.learningNewTech = learningNewTech;
-	}
-
-	public String getBoringDetails() {
-		return boringDetails;
-	}
-
-	public void setBoringDetails(String boringDetails) {
-		this.boringDetails = boringDetails;
-	}
-
-	public String getJobSecurity() {
-		return jobSecurity;
-	}
-
-	public void setJobSecurity(String jobSecurity) {
-		this.jobSecurity = jobSecurity;
-	}
-
-	public String getDiversityImportant() {
-		return diversityImportant;
-	}
-
-	public void setDiversityImportant(String diversityImportant) {
-		this.diversityImportant = diversityImportant;
-	}
-
-	public String getAnnoyingUI() {
-		return annoyingUI;
-	}
-
-	public void setAnnoyingUI(String annoyingUI) {
-		this.annoyingUI = annoyingUI;
-	}
-
-	public String getFriendsDevelopers() {
-		return friendsDevelopers;
-	}
-
-	public void setFriendsDevelopers(String friendsDevelopers) {
-		this.friendsDevelopers = friendsDevelopers;
-	}
-
-	public String getRightWrongWay() {
-		return rightWrongWay;
-	}
-
-	public void setRightWrongWay(String rightWrongWay) {
-		this.rightWrongWay = rightWrongWay;
-	}
-
-	public String getUnderstandComputers() {
-		return understandComputers;
-	}
-
-	public void setUnderstandComputers(String understandComputers) {
-		this.understandComputers = understandComputers;
-	}
-
-	public String getSeriousWork() {
-		return seriousWork;
-	}
-
-	public void setSeriousWork(String seriousWork) {
-		this.seriousWork = seriousWork;
-	}
-
-	public String getInvestTimeTools() {
-		return investTimeTools;
-	}
-
-	public void setInvestTimeTools(String investTimeTools) {
-		this.investTimeTools = investTimeTools;
-	}
-
-	public String getWorkPayCare() {
-		return workPayCare;
-	}
-
-	public void setWorkPayCare(String workPayCare) {
-		this.workPayCare = workPayCare;
-	}
-
-	public String getKinshipDevelopers() {
-		return kinshipDevelopers;
-	}
-
-	public void setKinshipDevelopers(String kinshipDevelopers) {
-		this.kinshipDevelopers = kinshipDevelopers;
-	}
-
-	public String getChallengeMyself() {
-		return challengeMyself;
-	}
-
-	public void setChallengeMyself(String challengeMyself) {
-		this.challengeMyself = challengeMyself;
-	}
-
-	public String getCompetePeers() {
-		return competePeers;
-	}
-
-	public void setCompetePeers(String competePeers) {
-		this.competePeers = competePeers;
-	}
-
-	public String getChangeWorld() {
-		return changeWorld;
-	}
-
-	public void setChangeWorld(String changeWorld) {
-		this.changeWorld = changeWorld;
-	}
 
 }

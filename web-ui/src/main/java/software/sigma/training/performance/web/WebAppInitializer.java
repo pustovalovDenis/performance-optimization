@@ -17,37 +17,37 @@ import software.sigma.training.performance.services.ServicesConfig;
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     private static final Log LOG = LogFactory.getLog(WebAppInitializer.class);
-    
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] {DaoConfig.class, ServicesConfig.class};
-	}
 
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] {WebMvcConfiguration.class};
-	}
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{DaoConfig.class, ServicesConfig.class};
+    }
 
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] {"/", "/perf/"};
-	}
-	
-	@Override
-	protected Filter[] getServletFilters() {
-		return new Filter[]{new MultipartFilter()};
-	}
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{WebMvcConfiguration.class};
+    }
 
-	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
-	    LOG.debug("Starting web application");
-		super.onStartup(servletContext);
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/", "/perf/"};
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new MultipartFilter()};
+    }
+
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        LOG.debug("Starting web application");
+        super.onStartup(servletContext);
 //		ServletRegistration.Dynamic facesServlet = servletContext.addServlet("Faces Servlet", new FacesServlet());
 //        facesServlet.setLoadOnStartup(1);
 //        facesServlet.addMapping("/WEB-INF/faces/*");
 //        facesServlet.addMapping("*.xhtml");
 //        facesServlet.addMapping("*.faces");
-        
-	}
-	
+
+    }
+
 }
