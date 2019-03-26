@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/layout/page.xhtml">
+            <ui:define name="header">Files upload</ui:define>
+            <ui:define name="content">
+                <h:form enctype="multipart/form-data">
+                    <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" multiple="true" update="uploadMessages" />
+                    <p:growl id="uploadMessages" showDetail="true" sticky="true" />
+                </h:form>
+                <h:link value="Uploaded data" outcome="results.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

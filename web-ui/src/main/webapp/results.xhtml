@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/layout/page.xhtml">
+            <ui:define name="header">Uploaded data. <h:link value="Refresh" outcome="results.xhtml"/></ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <p:dataTable id="respondents" var="respondent" value="#{uploadedDataView.respondents}" rows="20" 
+                            paginator="true" rowsPerPageTemplate="10,20,30,40,50">
+                        <p:column headerText="Id" sortBy="#{respondent.id}">
+                            <h:outputText value="#{respondent.id}" />
+                        </p:column>
+                        <p:column headerText="Country" sortBy="#{respondent.country}">
+                            <h:outputText value="#{respondent.country}" />
+                        </p:column>
+                        <p:column headerText="Expected salary" sortBy="#{respondent.expectedSalary}">
+                            <h:outputText value="#{respondent.expectedSalary}" />
+                        </p:column>
+                        <p:column headerText="Gender" sortBy="#{respondent.gender}">
+                            <h:outputText value="#{respondent.gender}" />
+                        </p:column>
+                        <p:column headerText="Interested answers" sortBy="#{respondent.interestedAnswers}">
+                            <h:outputText value="#{respondent.interestedAnswers}" />
+                        </p:column>
+                        <p:column headerText="Professional" sortBy="#{respondent.professional}">
+                            <h:outputText value="#{respondent.professional}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
