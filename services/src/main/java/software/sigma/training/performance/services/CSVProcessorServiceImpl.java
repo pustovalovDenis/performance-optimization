@@ -3,6 +3,7 @@ package software.sigma.training.performance.services;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -10,10 +11,13 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.google.common.collect.Lists;
 
 import software.sigma.training.performance.dao.RespondentDao;
 import software.sigma.training.performance.domain.Assess;
@@ -82,7 +86,7 @@ public class CSVProcessorServiceImpl implements CSVProcessorService {
         LOG.debug("Header map: " + parser.getHeaderMap());
         Transformer<Respondent> transformer = transformerFactory.getTransformer(Respondent.class);
 
-        respondentDao.saveAll(parser.getRecords().stream().map(record -> {
+        Lists.partition(parser.getRecords().parallelStream().map(record -> {
             Map<String, String> map = record.toMap();
             try {
                 return transformer.transform(map, null);
@@ -90,8 +94,7 @@ public class CSVProcessorServiceImpl implements CSVProcessorService {
                 LOG.error("Error during transforming data", e);
             }
             return null;
-        }).collect(Collectors.toList()));
-
+        }).collect(Collectors.toList()), 200).forEach(values -> respondentDao.saveAll(values));
         parser.close();
         LOG.debug("CSV processed succefully");
     }
