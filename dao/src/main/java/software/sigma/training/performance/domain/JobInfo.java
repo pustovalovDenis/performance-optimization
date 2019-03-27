@@ -16,7 +16,7 @@ public class JobInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Long id;
 
     @Column
     private String jobSeekingStatus;

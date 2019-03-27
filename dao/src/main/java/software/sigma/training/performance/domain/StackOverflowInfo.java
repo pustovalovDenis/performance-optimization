@@ -11,12 +11,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "stackoverflow_info")
+@Table(name = "stack_overflow_info")
 public class StackOverflowInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column
     private String stackOverflowDescribes;

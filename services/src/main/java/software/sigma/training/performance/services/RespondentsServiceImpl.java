@@ -16,7 +16,7 @@ public class RespondentsServiceImpl implements RespondentsService {
 
     @Override
     public Collection<RespondentDTO> getAll() {
-        return respondentDao.getAll().stream().map(respondent ->
+        return respondentDao.getRespondentSimpleDto().stream().map(respondent ->
                 RespondentDTO
                         .builder()
                         .id(respondent.getId())

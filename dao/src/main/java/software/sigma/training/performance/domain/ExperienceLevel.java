@@ -16,7 +16,7 @@ public class ExperienceLevel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column
     private String yearsProgram;

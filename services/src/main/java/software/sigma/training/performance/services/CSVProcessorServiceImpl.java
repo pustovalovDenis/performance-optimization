@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +43,12 @@ import software.sigma.training.performance.transform.TransformerFactoryImpl;
 public class CSVProcessorServiceImpl implements CSVProcessorService {
 
     private static final Log LOG = LogFactory.getLog(CSVProcessorServiceImpl.class);
-    
+
     private TransformerFactory transformerFactory;
-    
+
     @Autowired
     private RespondentDao respondentDao;
-    
+
     @PostConstruct
     public void init() {
         LOG.debug("Initializing CSV parser configuration");
@@ -74,24 +74,26 @@ public class CSVProcessorServiceImpl implements CSVProcessorService {
                 .addType(TechnicalDetails.class);
         transformerFactory = new TransformerFactoryImpl(configurationBuilder.build());
     }
-    
+
     @Override
     public void process(InputStream is) throws IOException {
         LOG.debug("Starting CSV processing");
         CSVParser parser = new CSVParser(new InputStreamReader(is), CSVFormat.DEFAULT.withFirstRecordAsHeader());
         LOG.debug("Header map: " + parser.getHeaderMap());
         Transformer<Respondent> transformer = transformerFactory.getTransformer(Respondent.class);
-        try {
-            for (CSVRecord record : parser) {
-                Map<String, String> map = record.toMap();
-                Respondent item = transformer.transform(map, null);
-                respondentDao.save(item);
+
+        respondentDao.saveAll(parser.getRecords().stream().map(record -> {
+            Map<String, String> map = record.toMap();
+            try {
+                return transformer.transform(map, null);
+            } catch (TransformerException e) {
+                LOG.error("Error during transforming data", e);
             }
-        } catch (TransformerException e) {
-            LOG.error("Error during transforming data", e);
-        }
+            return null;
+        }).collect(Collectors.toList()));
+
         parser.close();
         LOG.debug("CSV processed succefully");
     }
-    
+
 }

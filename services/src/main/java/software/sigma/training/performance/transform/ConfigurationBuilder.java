@@ -1,6 +1,7 @@
 package software.sigma.training.performance.transform;
 
 import java.beans.PropertyDescriptor;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -36,7 +37,7 @@ public class ConfigurationBuilder {
         return this;
     }
 
-    public ConfigurationBuilder ignoreAllProperties(String... names) {
+    public ConfigurationBuilder ignoreAllProperties(String ...names) {
         ignoredProperties.addAll(Sets.newHashSet(names));
         return this;
     }
@@ -49,14 +50,14 @@ public class ConfigurationBuilder {
         PropertyDescriptor[] propertyDescriptors = PropertyUtils.getPropertyDescriptors(clazz);
         currentType.boundPropertyTypes = new HashMap<>();
         currentType.bindings = new HashMap<>();
-        for (PropertyDescriptor descriptor : propertyDescriptors) {
+        Arrays.stream(propertyDescriptors).forEach(descriptor -> {
             if (descriptor.getWriteMethod() != null && descriptor.getReadMethod() != null
                     && !ignoredProperties.contains(descriptor.getName())) {
                 currentType.boundPropertyTypes.put(descriptor.getName(), descriptor.getPropertyType());
                 currentType.bindings.put(descriptor.getName(), keysCapitalization == KeysCapitalization.CAPITAL
                         ? StringUtils.capitalize(descriptor.getName()) : descriptor.getName());
             }
-        }
+        });
 
         return this;
     }
@@ -90,8 +91,8 @@ public class ConfigurationBuilder {
             return boundPropertyTypes.keySet();
         }
 
-        @SuppressWarnings("unchecked")
         @Override
+        @SuppressWarnings("unchecked")
         public <T> Class<T> getBoundPropertyClass(String propertyName) {
             return (Class<T>) boundPropertyTypes.get(propertyName);
         }

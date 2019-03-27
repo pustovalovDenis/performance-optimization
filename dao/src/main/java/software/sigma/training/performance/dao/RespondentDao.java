@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import software.sigma.training.performance.domain.Respondent;
+import software.sigma.training.performance.domain.RespondentSimpleDto;
 
 public interface RespondentDao {
 
@@ -17,9 +18,6 @@ public interface RespondentDao {
     void saveAll(Collection<Respondent> collection);
     
     @Transactional(propagation = Propagation.REQUIRED)
-    List<Respondent> getAll();
-
-    @Transactional(propagation = Propagation.REQUIRED)
-    List<Respondent> getAllBaseData();
+    List<RespondentSimpleDto> getRespondentSimpleDto();
     
 }
